@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { increaseCount } from '../Source/actionCounter';
+import { decreaseCount, increaseCount } from '../Source/actionCounter';
 
 const Counter = () => {
     //Get the current count from the store
@@ -15,12 +15,17 @@ const Counter = () => {
         dispatch(increaseCount());
     }
 
+    //Handle the decrease count button click
+    const handleDecrease = () => {
+        //Dispatch the action to increase the count by importing the decreaseCount action from the actionCounter.js file
+        dispatch(decreaseCount());
+    }
     return (
         <div>
             <div>
                 <h1>{count}</h1>
                 <button onClick={handleIncrease}>+</button>
-                <button>-</button>
+                <button onClick={handleDecrease}>-</button>
                 <button>Reset</button>
             </div>
         </div>
