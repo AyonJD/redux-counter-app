@@ -1,11 +1,25 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { increaseCount } from '../Source/actionCounter';
 
 const Counter = () => {
+    //Get the current count from the store
+    const count = useSelector(state => state.count);
+
+    //import dispatch from the store to dispatch actions
+    const dispatch = useDispatch();
+
+    //Handle the increase count button click
+    const handleIncrease = () => {
+        //Dispatch the action to increase the count by importing the increaseCount action from the actionCounter.js file
+        dispatch(increaseCount());
+    }
+
     return (
         <div>
             <div>
-                <h1>Count</h1>
-                <button>+</button>
+                <h1>{count}</h1>
+                <button onClick={handleIncrease}>+</button>
                 <button>-</button>
                 <button>Reset</button>
             </div>
